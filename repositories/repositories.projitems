@@ -26,6 +26,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)View\RepositoriesList.xaml.cs">
       <DependentUpon>RepositoriesList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Model\RepositoryModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Model\" />
