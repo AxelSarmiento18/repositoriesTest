@@ -1,6 +1,7 @@
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using repositories.View;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace repositories
@@ -11,7 +12,7 @@ namespace repositories
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+			MainPage = new NavigationPage(new RepositoriesList());
         }
 
         protected override void OnStart()
