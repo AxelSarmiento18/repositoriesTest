@@ -16,7 +16,7 @@ namespace repositories.Model
 			public string Avatar_Url { get; set; }
 			public string GravatarId { get; set; }
 			public string Url { get; set; }
-			public string HtmlUrl { get; set; }
+			public string Html_Url { get; set; }
 			public string FollowersUrl { get; set; }
 			public string FollowingUrl { get; set; }
 			public string GistsUrl { get; set; }
@@ -79,7 +79,7 @@ namespace repositories.Model
 			public string ArchiveUrl { get; set; }
 			public string DownloadsUrl { get; set; }
 			public string IssuesUrl { get; set; }
-			public string PullsUrl { get; set; }
+			public string Pulls_Url { get; set; }
 			public string MilestonesUrl { get; set; }
 			public string NotificationsUrl { get; set; }
 			public string LabelsUrl { get; set; }

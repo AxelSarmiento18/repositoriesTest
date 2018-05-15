@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="repositories.View.RepositoriesList" Title="GitHub Awsome">
-    <StackLayout>
-        <StackLayout WidthRequest="330" Orientation="Horizontal">
-            <SearchBar Placeholder="Search..." TextChanged="SearchBar_TextChanged" HorizontalOptions="FillAndExpand" HeightRequest="40" WidthRequest="50" PlaceholderColor="Gray" TextColor="#00A0C0">
-                <SearchBar.BackgroundColor>
-                    <OnPlatform x:TypeArguments="Color" iOS="#00A0C0" Android="Transparent" />
-                </SearchBar.BackgroundColor>
-                <SearchBar.CancelButtonColor>
-                    <OnPlatform x:TypeArguments="Color" iOS="White" Android="Gray" />
-                </SearchBar.CancelButtonColor>
-            </SearchBar>
-        </StackLayout>
-        <ActivityIndicator x:Name="Indicator" IsRunning="False" />
-        <ListView x:Name="RepositoriesListViews" ItemSelected="Handle_ItemSelected"  HasUnevenRows="True" SeparatorVisibility="None" CachingStrategy="RecycleElement">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="repositories.View.RepositoriesPull">
+    <ListView x:Name="RepositoriesPullListViews"  ItemSelected="Handle_ItemSelected" HasUnevenRows="True" SeparatorVisibility="None" CachingStrategy="RecycleElement">
             <ListView.ItemTemplate>
                 <DataTemplate >
                     <ViewCell x:Name="ViewCard" >
@@ -20,7 +8,7 @@
                             <Frame HasShadow="True" BackgroundColor="White" HorizontalOptions="FillAndExpand">
                                 <Grid Padding="1, 1, 1, 1" RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" x:Name="GridCard">
                                     <StackLayout>
-                                        <Label Text="{Binding Name}" />
+                                        <Label Text="{Binding Id}" />
                                         <Label Text="{Binding Owner.Login}" />
                                         <Label Text="{Binding Full_Name}" />
                                         <Label Text="{Binding Description}" />
@@ -35,5 +23,4 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-    </StackLayout>
 </ContentPage>

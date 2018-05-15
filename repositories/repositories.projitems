@@ -15,6 +15,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\RepositoriesPull.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\RepositoryDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
@@ -30,6 +38,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Service\GitHubService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Service\GitHubAPI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\RepositoriesModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\RepositoriesPull.xaml.cs">
+      <DependentUpon>RepositoriesPull.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Model\RepositoriesPullModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\RepositoryDetails.xaml.cs">
+      <DependentUpon>RepositoryDetails.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Model\" />

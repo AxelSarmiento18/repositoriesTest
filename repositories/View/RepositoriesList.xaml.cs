@@ -41,16 +41,17 @@ namespace repositories.View
 			         
 			if (string.IsNullOrEmpty(e.NewTextValue))
 			{
-				RepositoriesListView.ItemsSource = model.Items;
+				RepositoriesListViews.ItemsSource = model.Items;
 			}
 
 			else
 			{
-				RepositoriesListView.ItemsSource = model.Items.Where(x => x.Owner.Login.StartsWith(e.NewTextValue) || x.Name.StartsWith(e.NewTextValue));
+				RepositoriesListViews.ItemsSource = model.Items.Where(x => x.Owner.Login.StartsWith(e.NewTextValue) || x.Name.StartsWith(e.NewTextValue));
 			}
 		}
 
-
+        
+	
 		public async void repositoryList()
 		{
 			try
@@ -64,7 +65,7 @@ namespace repositories.View
 					response.EnsureSuccessStatusCode();
 					string responseBody = await response.Content.ReadAsStringAsync();
 					model = JsonConvert.DeserializeObject<RepositoriesModel>(responseBody);
-					RepositoriesListView.ItemsSource = model.Items;
+					RepositoriesListViews.ItemsSource = model.Items;
 
 				}
 			}
@@ -76,5 +77,18 @@ namespace repositories.View
 
 
 
+		public async void Handle_ItemSelected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
+		{
+			try{
+				var contact = e.SelectedItem as RepositoriesModel.Item;
+				await Navigation.PushAsync(new RepositoriesPull(contact));
+			}catch(Exception ex){
+				await DisplayAlert(ex.Message,"ok","ok");
+			}
+
+
+        
+
+		}
 	}
 }
