@@ -27,10 +27,14 @@
       <DependentUpon>RepositoriesList.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Model\RepositoryModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Service\GitHubService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Service\GitHubAPI.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\RepositoriesModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Model\" />
     <Folder Include="$(MSBuildThisFileDirectory)ViewModel\" />
     <Folder Include="$(MSBuildThisFileDirectory)View\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Service\" />
   </ItemGroup>
 </Project>
