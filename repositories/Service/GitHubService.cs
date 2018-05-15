@@ -5,22 +5,27 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Refit;
+using repositories.Model;
 
 namespace repositories.Service
 {
 	public class GitHubService
 	{
-
+		RepositoriesModel model = new RepositoriesModel();
+        
 		public GitHubService()
 		{
 
 
 		}
 
+        
+
 		public async void repositoryList()
 		{
 			try
 			{
+				
 				using (var c = new HttpClient())
 				{
 					HttpClient client = new HttpClient();
@@ -29,7 +34,9 @@ namespace repositories.Service
 					HttpResponseMessage response = await client.GetAsync(url);
 					response.EnsureSuccessStatusCode();
 					string responseBody = await response.Content.ReadAsStringAsync();
-					model = JsonConvert.DeserializeObject<OpeningsRecomendationApp>(responseBody);
+                    
+					model = JsonConvert.DeserializeObject<RepositoriesModel>(responseBody);
+
 				}
 			}
 			catch (Exception e)

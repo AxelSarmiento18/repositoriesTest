@@ -13,7 +13,7 @@ namespace repositories.Model
 		{
 			public string Login { get; set; }
 			public int Id { get; set; }
-			public string AvatarUrl { get; set; }
+			public string Avatar_Url { get; set; }
 			public string GravatarId { get; set; }
 			public string Url { get; set; }
 			public string HtmlUrl { get; set; }
@@ -42,7 +42,7 @@ namespace repositories.Model
 		{
 			public int Id { get; set; }
 			public string Name { get; set; }
-			public string FullName { get; set; }
+			public string Full_Name { get; set; }
 			public Owner Owner { get; set; }
 			public bool Private { get; set; }
 			public string HtmlUrl { get; set; }
@@ -111,7 +111,7 @@ namespace repositories.Model
 			public int OpenIssues { get; set; }
 			public int Watchers { get; set; }
 			public string DefaultBranch { get; set; }
-			public int Score { get; set; }
+			public double Score { get; set; }
 		}
 	}
 }

@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="repositories.View.RepositoriesList" Title="GitHub Awsome">
     <StackLayout>
         <StackLayout WidthRequest="330" Orientation="Horizontal">
-            <SearchBar Placeholder="Search..." HorizontalOptions="FillAndExpand" HeightRequest="40" WidthRequest="50" PlaceholderColor="Gray" TextColor="#00A0C0">
+            <SearchBar Placeholder="Search..." TextChanged="SearchBar_TextChanged" HorizontalOptions="FillAndExpand" HeightRequest="40" WidthRequest="50" PlaceholderColor="Gray" TextColor="#00A0C0">
                 <SearchBar.BackgroundColor>
                     <OnPlatform x:TypeArguments="Color" iOS="#00A0C0" Android="Transparent" />
                 </SearchBar.BackgroundColor>
@@ -11,64 +11,21 @@
                 </SearchBar.CancelButtonColor>
             </SearchBar>
         </StackLayout>
-        
         <ActivityIndicator x:Name="Indicator" IsRunning="False" />
-        <ListView x:Name="OpeningByCandidate" HasUnevenRows="True" SeparatorVisibility="None">
+        <ListView x:Name="RepositoriesListView" HasUnevenRows="True" SeparatorVisibility="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell x:Name="ViewCard">
                         <StackLayout Padding="8, 8, 8, 8">
                             <Frame HasShadow="True" BackgroundColor="White" HorizontalOptions="FillAndExpand">
                                 <Grid Padding="1, 1, 1, 1" RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" x:Name="GridCard">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="50" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <StackLayout Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="14" Orientation="Vertical" Padding="10,0,0,0">
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label Text="aaa" FontSize="20" FontAttributes="Bold" TextColor="#00A0C0" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" />
-                                        </StackLayout>
-                                        <Label Text="bbb" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="11" FontSize="15" />
-                                        <Label Text="cccc" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="11" FontSize="15" />
-                                    </StackLayout>
-                                    <Image  Grid.Column="0" Grid.ColumnSpan="3">
-                                    </Image>
-                                    <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="18" Orientation="Horizontal">
-                                        <Image  WidthRequest="95">
-                                            <Image.GestureRecognizers>
-                                                <TapGestureRecognizer  />
-                                            </Image.GestureRecognizers>
-                                        </Image>
-                                        <Image  WidthRequest="95" HorizontalOptions="CenterAndExpand">
-                                            <Image.GestureRecognizers>
-                                                <TapGestureRecognizer />
-                                            </Image.GestureRecognizers>
-                                        </Image>
-                                        <Image WidthRequest="95">
-                                            <Image.GestureRecognizers>
-                                                <TapGestureRecognizer  />
-                                            </Image.GestureRecognizers>
-                                        </Image>
+                                    <StackLayout>
+                                        <Label Text="{Binding Owner.Login}" />
+                                        <Label Text="{Binding Full_Name}" />
+                                        <Label Text="{Binding Description}" />
+                                        <Image Source="{Binding Owner.Avatar_Url}" ></Image>
+                                        <Label Text="{Binding Forks}" />
+                                        <Label Text="{Binding Score}" />
                                     </StackLayout>
                                 </Grid>
                             </Frame>
