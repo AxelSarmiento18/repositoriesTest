@@ -46,7 +46,7 @@ namespace repositories.View
 
 			else
 			{
-				RepositoriesListView.ItemsSource = model.Items.Where(x => x.Owner.Login.StartsWith(e.NewTextValue) || x.);
+				RepositoriesListView.ItemsSource = model.Items.Where(x => x.Owner.Login.StartsWith(e.NewTextValue) || x.Name.StartsWith(e.NewTextValue));
 			}
 		}
 

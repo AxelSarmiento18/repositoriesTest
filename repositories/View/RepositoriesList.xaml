@@ -12,7 +12,7 @@
             </SearchBar>
         </StackLayout>
         <ActivityIndicator x:Name="Indicator" IsRunning="False" />
-        <ListView x:Name="RepositoriesListView" HasUnevenRows="True" SeparatorVisibility="None">
+        <ListView x:Name="RepositoriesListView" HasUnevenRows="True" SeparatorVisibility="None" CachingStrategy="RecycleElement">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell x:Name="ViewCard">
@@ -20,6 +20,7 @@
                             <Frame HasShadow="True" BackgroundColor="White" HorizontalOptions="FillAndExpand">
                                 <Grid Padding="1, 1, 1, 1" RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" x:Name="GridCard">
                                     <StackLayout>
+                                        <Label Text="{Binding Name}" />
                                         <Label Text="{Binding Owner.Login}" />
                                         <Label Text="{Binding Full_Name}" />
                                         <Label Text="{Binding Description}" />
