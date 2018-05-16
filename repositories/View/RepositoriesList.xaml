@@ -3,48 +3,93 @@
     <StackLayout>
         <StackLayout WidthRequest="330" Orientation="Horizontal">
             <SearchBar Placeholder="Search..." TextChanged="SearchBar_TextChanged" HorizontalOptions="FillAndExpand" HeightRequest="40" WidthRequest="50" PlaceholderColor="Gray" TextColor="#00A0C0">
-                <SearchBar.BackgroundColor>
-                    <OnPlatform x:TypeArguments="Color" iOS="#00A0C0" Android="Transparent" />
-                </SearchBar.BackgroundColor>
-                <SearchBar.CancelButtonColor>
-                    <OnPlatform x:TypeArguments="Color" iOS="White" Android="Gray" />
-                </SearchBar.CancelButtonColor>
+               
             </SearchBar>
         </StackLayout>
-        <ActivityIndicator x:Name="Indicator" IsRunning="False" />
+       
         <ListView x:Name="RepositoriesListViews" ItemSelected="Handle_ItemSelected" HasUnevenRows="True" SeparatorVisibility="None" CachingStrategy="RecycleElement">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell x:Name="ViewCard">
                         <StackLayout Padding="8, 8, 8, 8">
                             <Frame HasShadow="True" BackgroundColor="White" HorizontalOptions="FillAndExpand">
-                                <Grid Padding="1, 1, 1, 1" RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" x:Name="GridCard">
+                                <Grid VerticalOptions="FillAndExpand" x:Name="GridCard">
                                     <StackLayout>
-                                        <Grid >
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="100*" />
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="65*" />
-                                                <ColumnDefinition Width="25*" />
-                                            </Grid.ColumnDefinitions>
-                                            <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+                                       
+                                            <StackLayout Orientation="Horizontal">
+                                            <StackLayout  Orientation="Vertical" HorizontalOptions="FillAndExpand" >
                                                 <Label Text="{Binding Name}" FontSize="Medium" TextColor="#5879BE" />
-                                                <Label Text="{Binding Description}" FontSize="Micro" LineBreakMode="TailTruncation" WidthRequest="50" />
+                                                <Label Text="{Binding Description}" FontSize="Micro" LineBreakMode="TailTruncation" WidthRequest="50" Grid.Row="1" Grid.Column="0" />
                                                 <StackLayout Orientation="Horizontal">
-                                                    <Label Text="{Binding Forks}" FontAttributes="Bold" TextColor="#E7B04B" />
-                                                    <Label Text="{Binding Score}" FontAttributes="Bold" TextColor="#E7B04B" />
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Image Source="fork.png" WidthRequest="15" HeightRequest="15">
+                                                        </Image>
+                                                        <Label Text="{Binding Forks}" FontAttributes="Bold" TextColor="#E7B04B" />
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Image Source="star.png" WidthRequest="15" HeightRequest="15">
+                                                        </Image>
+                                                        <Label Text="{Binding Score}" FontAttributes="Bold" TextColor="#E7B04B" />
+                                                    </StackLayout>
                                                 </StackLayout>
                                             </StackLayout>
-                                            <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
-                                                <ic:CircleImage x:Name="ProfilePicture" Source="{Binding Owner.Avatar_Url}" HeightRequest="100" WidthRequest="100" BorderThickness="1" BorderColor="#409DFB">
-                                                    
+                                            
+                                            <StackLayout Orientation="Vertical" HorizontalOptions="End" WidthRequest="100" Spacing="0" >
+                                                <ic:CircleImage x:Name="ProfilePicture" Source="{Binding Owner.Avatar_Url}" HeightRequest="50" WidthRequest="50" BorderThickness="1" BorderColor="#409DFB">
                                                 </ic:CircleImage>
-                                               
                                                 <Label Text="{Binding Owner.Login}" HorizontalTextAlignment="Center" FontSize="Micro" TextColor="#5879BE" FontAttributes="Bold" />
                                                 <Label Text="{Binding Full_Name}" HorizontalTextAlignment="Center" FontSize="Micro" />
                                             </StackLayout>
-                                        </Grid>
+                                                </StackLayout>
+                                            <!--
+                                            <StackLayout Grid.Row="0" Grid.Column="0">
+                                                <Label Text="{Binding Name}" FontSize="Medium" TextColor="#5879BE" Grid.Row="0" Grid.Column="0" />
+                                            </StackLayout>
+
+                                             <StackLayout Grid.Row="1" Grid.Column="0">
+                                                 <Label Text="{Binding Description}" FontSize="Micro" LineBreakMode="TailTruncation" WidthRequest="50" Grid.Row="1" Grid.Column="0"/>
+                                               
+                                            </StackLayout>
+
+
+                                            
+                                            <StackLayout Orientation="Vertical" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1">
+                                                <ic:CircleImage x:Name="ProfilePicture" Source="{Binding Owner.Avatar_Url}"  HeightRequest="50" WidthRequest="50" BorderThickness="1" BorderColor="#409DFB">
+                                                </ic:CircleImage>
+                                            </StackLayout>
+                                            <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Vertical">
+                                               <Label Text="{Binding Owner.Login}"  HorizontalTextAlignment="Center" FontSize="Micro" TextColor="#5879BE" FontAttributes="Bold" />
+                                            <Label Text="{Binding Full_Name}" HorizontalTextAlignment="Center" FontSize="Micro" />
+                                            
+                                            </StackLayout>
+
+                                            <StackLayout Orientation="Horizontal" Grid.Row="2"  Grid.Column="0">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Image Source="fork.png" WidthRequest="25" HeightRequest="25"></Image>
+                                                    <Label Text="{Binding Forks}" FontAttributes="Bold" TextColor="#E7B04B" />
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Image Source="star.png" WidthRequest="25" HeightRequest="25"></Image>
+                                                    <Label Text="{Binding Score}" FontAttributes="Bold" TextColor="#E7B04B" />
+                                                </StackLayout>
+                                            </StackLayout>
+                                    -->
+                                            <!--<Label Text="{Binding Name}" FontSize="Medium" TextColor="#5879BE" Grid.Row="0" Grid.Column="0" />
+                                                <Label Text="{Binding Description}" FontSize="Micro" LineBreakMode="TailTruncation" WidthRequest="50" Grid.Row="1" Grid.Column="0"/>
+                                                <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.RowSpan="3" Grid.Column="0" >
+                                                    <Label Text="{Binding Forks}" FontAttributes="Bold" TextColor="#E7B04B" />
+                                                    <Label Text="{Binding Score}" FontAttributes="Bold" TextColor="#E7B04B" />
+                                                </StackLayout>
+                                           
+
+                                                <ic:CircleImage x:Name="ProfilePicture" Source="{Binding Owner.Avatar_Url}" Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" HeightRequest="100" WidthRequest="100" BorderThickness="1" BorderColor="#409DFB">
+                                                    
+                                                </ic:CircleImage>
+                                               
+                                                <Label Text="{Binding Owner.Login}" Grid.Row="2" Grid.Column="3" HorizontalTextAlignment="Center" FontSize="Micro" TextColor="#5879BE" FontAttributes="Bold" />
+                                                <Label Text="{Binding Full_Name}" HorizontalTextAlignment="Center" FontSize="Micro" />
+                         -->
+                                      
                                     </StackLayout>
                                 </Grid>
                             </Frame>
