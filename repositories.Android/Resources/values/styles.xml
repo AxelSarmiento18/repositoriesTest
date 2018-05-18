@@ -4,7 +4,7 @@
     </style>
 
     <style name="Theme.Splash" parent="android:Theme">
-        <item name="android:windowBackground">@drawable/splashJobit</item>
+        <item name="android:windowBackground">@drawable/splashgithub</item>
         <item name="android:windowNoTitle">true</item>
     </style>
     <!-- Base theme applied no matter what API -->

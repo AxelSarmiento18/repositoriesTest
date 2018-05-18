@@ -108,6 +108,7 @@
     <AndroidResource Include="Resources\drawable\searchicon.png" />
     <AndroidResource Include="Resources\drawable\fork.png" />
     <AndroidResource Include="Resources\drawable\star.png" />
+    <AndroidResource Include="Resources\drawable\splashgithub.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
