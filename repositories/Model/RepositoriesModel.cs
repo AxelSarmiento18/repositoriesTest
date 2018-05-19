@@ -7,7 +7,7 @@ namespace repositories.Model
 	{
 		public int TotalCount { get; set; }
 		public bool IncompleteResults { get; set; }
-		public IList<Item> Items { get; set; }
+		public List<Item> Items { get; set; }
 
 		public class Owner
 		{

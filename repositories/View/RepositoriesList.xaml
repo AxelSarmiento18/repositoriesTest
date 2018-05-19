@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="repositories.View.RepositoriesList" xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions" Title="GitHub Awsome">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="repositories.View.RepositoriesList" 
+             xmlns:ViewModels="clr-namespace:repositories.ViewModel"
+             xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions" 
+             Title="GitHub Awsome">
+    <ContentPage.BindingContext>
+        <ViewModels:RepositoriesViewModel/>
+    </ContentPage.BindingContext>
     <StackLayout>
         <StackLayout WidthRequest="330" Orientation="Horizontal">
-            <SearchBar Placeholder="Search..." TextChanged="SearchBar_TextChanged" HorizontalOptions="FillAndExpand" HeightRequest="40" WidthRequest="50" PlaceholderColor="Gray" TextColor="#00A0C0">
+          <SearchBar Placeholder="Search..."  TextChanged="SearchBar_TextChanged"  HorizontalOptions="FillAndExpand" HeightRequest="40" WidthRequest="50" PlaceholderColor="Gray" TextColor="#00A0C0">
                
             </SearchBar>
         </StackLayout>
        
-        <ListView x:Name="RepositoriesListViews" ItemSelected="Handle_ItemSelected" HasUnevenRows="True" SeparatorVisibility="None" CachingStrategy="RecycleElement">
+        <ListView x:Name="RepoList" ItemsSource="{Binding RepositoriesListM}" ItemSelected="Handle_ItemSelected" HasUnevenRows="True" SeparatorVisibility="None" CachingStrategy="RecycleElement">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell x:Name="ViewCard">
