@@ -17,12 +17,15 @@ namespace repositories.ViewModel
 
 		public RepositoriesViewModel()
 		{
-			
-			//var git = new GitHubService();
-			//RepositoriesListM = git.GetRepositories();
+
+			IsBusy = true;
 			InitializationDataAsync();
 			Items = _repositoriesListM;
 		}
+
+		private bool _isBusy { get; set; }
+		public bool IsBusy { get { return _isBusy; } set { _isBusy = value; OnPropertyChanged(); } }
+
 
 		public List<RepositoriesModel.Item> RepositoriesListM
 		{
@@ -47,6 +50,7 @@ namespace repositories.ViewModel
 		{
 			var gitHubService = new GitHubService();
 			RepositoriesListM = await gitHubService.GetRepositoriesAsync();
+			IsBusy = false;
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;

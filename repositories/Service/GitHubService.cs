@@ -13,22 +13,23 @@ namespace repositories.Service
 {
 	public class GitHubService
 	{
-
-
 		public GitHubService()
 		{
-
-
 		}
 
-		public async Task<List<RepositoriesModel.Item>>GetRepositoriesAsync()
+		public async Task<List<RepositoriesModel.Item>> GetRepositoriesAsync()
 		{
 			RestClient<RepositoriesModel.Item> restClient = new RestClient<RepositoriesModel.Item>();
-
 			var repositoriesList = await restClient.GetAsync();
 			return repositoriesList;
-			}
+		}
 
-      
+
+		public async Task<List<RepositoriesPullModel>> GetPullRepositoriesAsync(string pullURL)
+		{
+			RestClient<RepositoriesPullModel> restClient = new RestClient<RepositoriesPullModel>();
+			var pullrepositoriesList = await restClient.GetPullAsync(pullURL);
+			return pullrepositoriesList;
+		}
 	}
 }

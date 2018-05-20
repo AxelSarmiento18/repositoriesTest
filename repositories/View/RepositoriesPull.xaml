@@ -1,47 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="repositories.View.RepositoriesPull" xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions" Title="{Binding Full_Name}">
-<StackLayout Orientation="Vertical">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="repositories.View.RepositoriesPull" xmlns:ViewModels="clr-namespace:repositories.ViewModel" xmlns:ic="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions" Title="{Binding Full_Name}">
+    <StackLayout Orientation="Vertical">
         <StackLayout Orientation="Horizontal" Padding="20,10,20,10">
-             <Label x:Name="openRepo" FontSize="Medium" FontAttributes="Bold" TextColor="#E17A26"></Label>
-             <Label x:Name="closeRepo" FontSize="Medium" FontAttributes="Bold" TextColor="Gray"></Label>
-   
+            <Label x:Name="openRepo" Text="{Binding repoOpen, StringFormat='{0:F0} opened'} " FontSize="Medium" FontAttributes="Bold" TextColor="#E17A26">
+            </Label>
+            <Label x:Name="closeRepo" Text="{Binding repoClose, StringFormat='/ {0:F0} closed'}" FontSize="Medium" FontAttributes="Bold" TextColor="Gray">
+            </Label>
         </StackLayout>
-    <ListView x:Name="RepositoriesPullListViews" ItemSelected="Handle_ItemSelected" HasUnevenRows="True" SeparatorVisibility="None" CachingStrategy="RecycleElement">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell x:Name="ViewCard">
-                    <StackLayout Padding="8, 8, 8, 8">
-                        <Frame HasShadow="True" BackgroundColor="White" HorizontalOptions="FillAndExpand">
-                            <Grid Padding="1, 1, 30, 1" RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" x:Name="GridCard">
-                                <StackLayout Orientation="Vertical" Spacing="5">
-                                    <Label Text="{Binding Title}" FontSize="Medium" TextColor="#5879BE" />
-                                    <Label Text="{Binding Body}" FontSize="Micro" LineBreakMode="TailTruncation" WidthRequest="50" />
-                                 <StackLayout Orientation="Horizontal" Spacing="5">
-                                        <StackLayout Orientation="Horizontal" Spacing="0">
-                                            <ic:CircleImage x:Name="ProfilePicture" Source="{Binding User.Avatar_Url}" HeightRequest="35" WidthRequest="35" BorderThickness="1" BorderColor="#409DFB">
-                                            </ic:CircleImage>
-                                        </StackLayout>
-                                        <StackLayout Orientation="Vertical" Spacing="0" Padding="0" VerticalOptions="Center" HorizontalOptions="Center">
-                                            <Label Text="{Binding User.Login}" FontSize="Micro" TextColor="#5879BE" />
-                                            <Label Text="{Binding Created_at, StringFormat='{}{0:dd/MM/yyyy}'}" FontSize="Micro" TextColor="Gray" />
+        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" HeightRequest="40" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+        </ActivityIndicator>
+        <ListView x:Name="RepositoriesPullListViews" ItemsSource="{Binding RepositoriesPullList}" ItemSelected="Handle_ItemSelected" HasUnevenRows="True" SeparatorVisibility="None" CachingStrategy="RecycleElement">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell x:Name="ViewCard">
+                        <StackLayout Padding="8, 8, 8, 8">
+                            <Frame HasShadow="True" BackgroundColor="White" HorizontalOptions="FillAndExpand">
+                                <Grid Padding="1, 1, 30, 1" RowSpacing="1" ColumnSpacing="1" VerticalOptions="FillAndExpand" x:Name="GridCard">
+                                    <StackLayout Orientation="Vertical" Spacing="5">
+                                        <Label Text="{Binding Title}" FontSize="Medium" TextColor="#5879BE" />
+                                        <Label Text="{Binding Body}" FontSize="Micro" LineBreakMode="TailTruncation" WidthRequest="50" />
+                                        <StackLayout Orientation="Horizontal" Spacing="5">
+                                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                                <ic:CircleImage x:Name="ProfilePicture" Source="{Binding User.Avatar_Url}" HeightRequest="35" WidthRequest="35" BorderThickness="1" BorderColor="#409DFB">
+                                                </ic:CircleImage>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Vertical" Spacing="0" Padding="0" VerticalOptions="Center" HorizontalOptions="Center">
+                                                <Label Text="{Binding User.Login}" FontSize="Micro" TextColor="#5879BE" />
+                                                <Label Text="{Binding Created_at, StringFormat='{}{0:dd/MM/yyyy}'}" FontSize="Micro" TextColor="Gray" />
+                                            </StackLayout>
                                         </StackLayout>
                                     </StackLayout>
-                                </StackLayout>
-                                <!--  <StackLayout>
-                                        <Label Text="{Binding Id}" />
-                                        <Label Text="{Binding Owner.Login}" />
-                                        <Label Text="{Binding Full_Name}" />
-                                        <Label Text="{Binding Description}" />
-                                        <Image Source="{Binding Owner.Avatar_Url}" ></Image>
-                                        <Label Text="{Binding Forks}" />
-                                        <Label Text="{Binding Score}" />
-                                    </StackLayout>-->
-                            </Grid>
-                        </Frame>
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
-        </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>

@@ -34,7 +34,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)View\RepositoriesList.xaml.cs">
       <DependentUpon>RepositoriesList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Model\RepositoryModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Service\GitHubService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\RepositoriesModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\RepositoriesPull.xaml.cs">
@@ -46,6 +45,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\RepositoriesViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RestClient\RestClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\PullRepositoriesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Model\" />
