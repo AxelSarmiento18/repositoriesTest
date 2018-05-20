@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using repositories.Service;
 using System.Threading.Tasks;
 using System.Linq;
+using Plugin.Connectivity;
 
 namespace repositories.ViewModel
 {
@@ -13,10 +14,14 @@ namespace repositories.ViewModel
 	{
 		public PullRepositoriesViewModel(string pullUrl)
 		{
-			IsBusy = true;
-			InitializationDataAsync(pullUrl);
-
+			
+			if (DoIHaveInternet() == true)
+				InitializationDataAsync(pullUrl);
+			else
+				Console.Write("No internet connection");
 		}
+
+
 
 		private List<RepositoriesPullModel> _repositoriesPullList { get; set; }
 		private string _pullURL { get; set; }
@@ -43,11 +48,11 @@ namespace repositories.ViewModel
 
 		private async Task InitializationDataAsync(string pullUrl)
 		{
-			
+			IsBusy = true;
 			var gitHubService = new GitHubService();
 			RepositoriesPullList = await gitHubService.GetPullRepositoriesAsync(pullUrl);
 			repoOpen = RepositoriesPullList.Count(x => x.State == "open");
-			repoClose = RepositoriesPullList.Count(x => x.State == "close");
+			repoClose = RepositoriesPullList.Count(x => x.State == "closed");
 			IsBusy = false;
 
 		}
@@ -58,6 +63,11 @@ namespace repositories.ViewModel
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
+
+		public bool DoIHaveInternet()
+        {
+            return CrossConnectivity.Current.IsConnected;
+        }
 	}
 }
 

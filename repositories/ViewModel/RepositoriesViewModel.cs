@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
+using Plugin.Connectivity;
 
 namespace repositories.ViewModel
 {
@@ -17,9 +18,10 @@ namespace repositories.ViewModel
 
 		public RepositoriesViewModel()
 		{
-
-			IsBusy = true;
-			InitializationDataAsync();
+            if (DoIHaveInternet() == true)
+				InitializationDataAsync();
+			else
+				Console.Write("No internet connection");
 			Items = _repositoriesListM;
 		}
 
@@ -38,21 +40,27 @@ namespace repositories.ViewModel
 
 		}
 
-		public List<RepositoriesModel.Item> SearchRepository(){
+		public List<RepositoriesModel.Item> SearchRepository()
+		{
 
 			List<RepositoriesModel.Item> Items = new List<RepositoriesModel.Item>();
 			Items = RepositoriesListM;
 			return Items;
 		}
-  
+
 
 		private async Task InitializationDataAsync()
 		{
+			IsBusy = true;
 			var gitHubService = new GitHubService();
 			RepositoriesListM = await gitHubService.GetRepositoriesAsync();
 			IsBusy = false;
 		}
 
+		public bool DoIHaveInternet()
+		{
+			return CrossConnectivity.Current.IsConnected;
+		}
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

@@ -46,7 +46,7 @@ namespace repositories.RestClient
 				using (var c = new HttpClient())
 				{
 					HttpClient client = new HttpClient();
-					string url = pullsURL.Replace("{/number}", "");
+					string url = pullsURL.Replace("{/number}", "?state=all");
 					client.Timeout = TimeSpan.FromSeconds(30);
 					HttpResponseMessage response = await client.GetAsync(url);
 					response.EnsureSuccessStatusCode();

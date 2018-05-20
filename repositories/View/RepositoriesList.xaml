@@ -36,7 +36,7 @@
                                                 </StackLayout>
                                             </StackLayout>
                                             <StackLayout Orientation="Vertical" HorizontalOptions="End" WidthRequest="100" Spacing="0">
-                                                <ic:CircleImage x:Name="ProfilePicture" Source="{Binding Owner.Avatar_Url}" HeightRequest="50" WidthRequest="50" BorderThickness="1" BorderColor="#409DFB">
+                                                <ic:CircleImage x:Name="ProfilePicture" Source="{Binding Owner.Avatar_Url}" HeightRequest="50" WidthRequest="50" BorderThickness="1" BorderColor="#94C672">
                                                 </ic:CircleImage>
                                                 <Label Text="{Binding Owner.Login}" HorizontalTextAlignment="Center" FontSize="Micro" TextColor="#5879BE" FontAttributes="Bold" />
                                                 <Label Text="{Binding Full_Name}" HorizontalTextAlignment="Center" FontSize="Micro" />
